@@ -10,6 +10,12 @@
   (bookCreated)="addBook($event)"
   ></app-book-add>
 }
+@if(action==='edit'){
+    <app-book-edit [book]="bookToEdit"
+    (bookEdited)="editBook($event)"
+    >       
+    </app-book-edit>
+}
 <table class="table table-striped">
     <thead>
       <tr class="dark">
@@ -30,15 +36,9 @@
           <td>{{book.author}}</td>
           <td>{{book.price}}</td>
           <td><button class="btn btn-success"
-            (click)="getId(book.id)">Editer</button></td>
+            (click)="showEditForm(book)">Editer</button></td>
           <td><button class="btn btn-danger">Supprimer</button></td>
         </tr>
       }
     </tbody>
 </table>
-@if(action==='edit'){
-    <app-book-edit [bookToEdit]="selectedBook"
-    (bookEdited)="editBook($event)"
-    >       
-    </app-book-edit>
-}

@@ -20,23 +20,30 @@ export class BookListComponent {
   ];
 
   action="";
-  selectedBook?:Book;
-  selectedId?:number;
+  bookToEdit?:Book;
 
   changeAction(action:string){
     this.action= action;
   }
+
   addBook(book:Book){
     this.books=[...this.books,book];//copier les elts du tab ancien et les ajoute ds le nvx tab qui va écraser l'ancien
     this.changeAction("");//masque le formulaire
   }
-  getId(id:number){
-    this.selectedId=id;
-    this.selectedBook=this.books.find(book=>book.id===id);
-    this.changeAction('edit');
-  }
+
   editBook(book:Book){
-    this.books[book.id-1]=book;
+    this.books=this.books.map(
+      currentBook=>currentBook.id===book.id?book:currentBook
+      //si l'id de currentBook est égale à celui de book (qui est modifié)
+      //on retourne le book (qui est modifié) et on passe à l'indice suivant
+      //sinon on retourne currentBook et on passe à l'indice suivant
+    )
     this.changeAction("");
+  }
+
+  showEditForm(book:Book){
+    this.changeAction('edit');
+    this.bookToEdit=book;
+    console.log(this.bookToEdit);
   }
 }

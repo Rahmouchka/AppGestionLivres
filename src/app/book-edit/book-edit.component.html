@@ -2,17 +2,17 @@
 <form id="editForm">
     <div class="mb-3">
       <label for="title" class="form-label">Titre</label>
-      <input type="text" class="form-control" id="title" value="{{bookToEdit?.title}}" #title/>
+      <input type="text" class="form-control" id="title" name="title" [(ngModel)]="book!.title"/>
     </div>
     <div class="mb-3">
       <label for="author" class="form-label">Auteur</label>
-      <input type="text" class="form-control" id="author" value="{{bookToEdit?.author}}" #author/>
+      <input type="text" class="form-control" id="author" name="author" [(ngModel)]="book!.author" />
     </div>
     <div class="mb-3">
       <label for="price" class="form-label" >Prix</label>
-      <input type="number" class="form-control" id="price" value="{{bookToEdit?.price}}" #price/>
+      <input type="number" class="form-control" id="price" name="price" [(ngModel)]="book!.price"/>
     </div>
     <button type="button" id="btnValidAdd" 
-    class="btn btn-warning" (click)="editBook(title.value,author.value,+price.value)"
+    class="btn btn-warning" (click)="editBook()"
     >Valider</button>
 </form>
