@@ -46,4 +46,10 @@ export class BookListComponent {
     this.bookToEdit=book;
     console.log(this.bookToEdit);
   }
+
+  deleteBook(id:number){
+    if(confirm("Êtes-vous sûr de vouloir supprimer le livre?")){
+      this.books=this.books.filter(currentBook=>currentBook.id!==id);
+    }
+  }
 }
