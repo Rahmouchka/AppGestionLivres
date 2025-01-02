@@ -29,9 +29,16 @@
           <td>{{book.title}}</td>
           <td>{{book.author}}</td>
           <td>{{book.price}}</td>
-          <td><button class="btn btn-success">Editer</button></td>
+          <td><button class="btn btn-success"
+            (click)="getId(book.id)">Editer</button></td>
           <td><button class="btn btn-danger">Supprimer</button></td>
         </tr>
       }
     </tbody>
 </table>
+@if(action==='edit'){
+    <app-book-edit [bookToEdit]="selectedBook"
+    (bookEdited)="editBook($event)"
+    >       
+    </app-book-edit>
+}
